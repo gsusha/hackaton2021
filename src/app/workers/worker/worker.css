@@ -1,0 +1,8 @@
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.avatar {
+    height: 300px;
+    width: 300px;
+}

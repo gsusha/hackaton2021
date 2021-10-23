@@ -1,0 +1,11 @@
+body {
+    overflow: hidden;
+}
+
+.tag {
+    background: #2D3034;
+    padding: 3px 20px;
+    border-radius: 40px;
+    margin: 2px!important;
+    font-size: 12px!important;
+}
