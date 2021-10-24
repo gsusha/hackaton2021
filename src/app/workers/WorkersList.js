@@ -1,53 +1,33 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import EqualizerIcon from '@mui/icons-material/Equalizer';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ExtensionIcon from '@mui/icons-material/Extension';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './workers.css';
+import { useContext, useState } from "react";
+import { AppContext} from "../../contexts/Context";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import SettingsIcon from "@mui/icons-material/Settings";
+import ExtensionIcon from "@mui/icons-material/Extension";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import * as React from "react";
+import {Actions} from "../../contexts/Actions";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const WorkersList = () => {
+    const data = Actions();
+    const {
+        workers,
+        workerLength,
+    } = useContext(AppContext);
 
-const theme = createTheme(
-    {
-        palette: {
-            mode: 'dark',
-            primary: {
-                main: '#18A0FB',
-            },
-            other: {
-                border: '#7C7F85',
-            },
-            background: {
-                default: '#282A2E',
-                paper: '#36393F',
-            }
-        },
-    }
-);
-
-export default function Workers() {
-    return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <main>
-                {/* Hero unit */}
-                <Container sx={{ py: 8 }} maxWidth="md">
-                    {/* End hero unit */}
-                    <Grid container spacing={4}>
-                        {cards.map((card) => (
-                            <Grid item key={card} xs={12} sm={6} md={4}>
+    return !workerLength ? (
+        <p>{workerLength === null ? "Loading..." : "Please insert some users."}</p>
+    ) : (
+        <Grid container spacing={4}>
+            {workers.map((card) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card
                                     sx={{
                                         height: '100%',
@@ -78,9 +58,10 @@ export default function Workers() {
                                         }}
                                     >
                                         <Typography gutterBottom variant="h6" component="h2" align={"center"} m={-0.5}>
-                                            Анна Иванова
+                                            user_name
                                         </Typography>
-                                        <Typography gutterBottom variant="subtitle2" component="h3" align={"center"} marginBottom={2}>
+                                        <Typography gutterBottom variant="subtitle2" component="h3" align={"center"}
+                                                    marginBottom={2}>
                                             UI/UX Дизайнер
                                         </Typography>
                                         <Box
@@ -133,15 +114,14 @@ export default function Workers() {
                                         </Box>
                                     </CardContent>
                                     <CardActions sx={{alignSelf: "center"}}>
-                                        <Button href="/app/worker" color="primary" size="small" endIcon={<ArrowForwardIcon />}>Подробнее</Button>
+                                        <Button href="/app/worker" color="primary" size="small"
+                                                endIcon={<ArrowForwardIcon/>}>Подробнее</Button>
                                     </CardActions>
                                 </Card>
                             </Grid>
-                        ))}
-                    </Grid>
-                </Container>
-            </main>
+                ))}
+        </Grid>
+        );
+};
 
-        </ThemeProvider>
-    );
-}
+export default WorkersList;

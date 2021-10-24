@@ -1,0 +1,14 @@
+.projects-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -6px;
+    margin-bottom: 30px;
+}
+
+.projects-tag {
+    background: #36393F;
+    padding: 3px 20px;
+    border-radius: 40px;
+    margin: 6px!important;
+    font-size: 16px!important;
+}
