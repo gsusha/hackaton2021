@@ -13,10 +13,30 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import * as React from "react";
-import {Actions} from "../../contexts/Actions";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import './workers.css';
+
+const theme = createTheme(
+    {
+        palette: {
+            mode: 'dark',
+            primary: {
+                main: '#18A0FB',
+            },
+            other: {
+                border: '#7C7F85',
+            },
+            background: {
+                default: '#282A2E',
+                paper: '#36393F',
+            }
+        },
+    }
+);
 
 const WorkersList = () => {
-    const data = Actions();
     const {
         workers,
         workerLength,
@@ -25,9 +45,15 @@ const WorkersList = () => {
     return !workerLength ? (
         <p>{workerLength === null ? "Loading..." : "Please insert some users."}</p>
     ) : (
-        <Grid container spacing={4}>
-            {workers.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <main>
+                {/* Hero unit */}
+                <Container sx={{ py: 8 }} maxWidth="md">
+                    {/* End hero unit */}
+                    <Grid container spacing={4}>
+                        {workers.map(({id, name, lvl, project}) => (
+                            <Grid item key={id} xs={12} sm={6} md={4}>
                                 <Card
                                     sx={{
                                         height: '100%',
@@ -58,10 +84,9 @@ const WorkersList = () => {
                                         }}
                                     >
                                         <Typography gutterBottom variant="h6" component="h2" align={"center"} m={-0.5}>
-                                            user_name
+                                            {name}
                                         </Typography>
-                                        <Typography gutterBottom variant="subtitle2" component="h3" align={"center"}
-                                                    marginBottom={2}>
+                                        <Typography gutterBottom variant="subtitle2" component="h3" align={"center"} marginBottom={2}>
                                             UI/UX Дизайнер
                                         </Typography>
                                         <Box
@@ -77,14 +102,14 @@ const WorkersList = () => {
                                                 }}
                                             />
                                             <Typography variant="subtitle2">
-                                                Junior
+                                                {lvl}
                                             </Typography>
                                         </Box>
                                         <Box sx={{display: 'flex', alignItems: 'center', marginBottom: 0.5}}>
                                             <SettingsIcon sx={{fontSize: '15px', marginRight: 1}}
                                             />
                                             <Typography variant="subtitle2">
-                                                Hackathon 2021
+                                                {project}
                                             </Typography>
                                         </Box>
                                         <Box sx={{display: 'flex'}}>
@@ -114,14 +139,16 @@ const WorkersList = () => {
                                         </Box>
                                     </CardContent>
                                     <CardActions sx={{alignSelf: "center"}}>
-                                        <Button href="/app/worker" color="primary" size="small"
-                                                endIcon={<ArrowForwardIcon/>}>Подробнее</Button>
+                                        <Button href="/app/worker" color="primary" size="small" endIcon={<ArrowForwardIcon />}>Подробнее</Button>
                                     </CardActions>
                                 </Card>
                             </Grid>
-                ))}
-        </Grid>
-        );
+                        ))}
+                    </Grid>
+                </Container>
+            </main>
+        </ThemeProvider>
+    );
 };
 
 export default WorkersList;

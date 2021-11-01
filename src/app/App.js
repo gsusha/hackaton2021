@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './listItems';
-import Workers from './workers/Workers';
 import {Avatar} from "@mui/material";
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -20,6 +19,9 @@ import Auth from "./auth/Auth";
 import Worker from "./workers/worker/Worker";
 import Projects from "./projects/Projects";
 import Project from "./projects/project/Project";
+import { Actions } from "../contexts/Actions";
+import { Provider } from "../contexts/Context";
+
 
 
 const drawerWidth = 240;
@@ -168,7 +170,7 @@ function DashboardContent() {
                             >
                                 <Toolbar />
 
-                                <Route path="/app/auth">
+                                <Route path="/hackaton2021/app/auth">
                                     <Auth />
                                 </Route>
                                 <Route path="/app/workers">
