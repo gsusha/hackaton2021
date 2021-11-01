@@ -139,7 +139,7 @@ const WorkersList = () => {
                                         </Box>
                                     </CardContent>
                                     <CardActions sx={{alignSelf: "center"}}>
-                                        <Button href="/app/worker" color="primary" size="small" endIcon={<ArrowForwardIcon />}>Подробнее</Button>
+                                        <Button href="/hackaton2021/app/worker" color="primary" size="small" endIcon={<ArrowForwardIcon />}>Подробнее</Button>
                                     </CardActions>
                                 </Card>
                             </Grid>

@@ -170,7 +170,7 @@ function DashboardContent() {
                             >
                                 <Toolbar />
 
-                                <Route path="/hackaton2021/app/auth">
+                                <Route path="/app/auth">
                                     <Auth />
                                 </Route>
                                 <Route path="/app/workers">

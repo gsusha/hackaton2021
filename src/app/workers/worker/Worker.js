@@ -40,7 +40,7 @@ export default function Worker() {
             <CssBaseline />
             <main>
                 <Container sx={{ py: 8 }} maxWidth="md">
-                    <Button href="/app/workers" className="worker-btn" size="large" startIcon={<ArrowBackIosIcon />}>
+                    <Button href="/hackaton2021/app/workers" className="worker-btn" size="large" startIcon={<ArrowBackIosIcon />}>
                         Иван Иванов</Button>
                     <Box className="worker-card" marginBottom={10}>
                         <Box>
